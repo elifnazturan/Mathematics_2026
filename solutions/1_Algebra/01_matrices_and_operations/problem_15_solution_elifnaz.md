@@ -57,6 +57,4 @@ $$(AB)C = A(BC) = \begin{pmatrix} 10 & 3 \\\\ 2 & -3 \end{pmatrix}$$
 
 * **Verification:** Every entry of $\begin{pmatrix} 10 & 3 \\\\ 2 & -3 \end{pmatrix}$ agrees across both paths, and counting scalar multiplications/additions per dot product confirms $4 \times 3 + 4 \times 2 = 20$ multiplications for $(AB)C$ versus $6 \times 2 + 4 \times 3 = 24$ multiplications for $A(BC)$.
 
----
 
-> **Purpose of this exercise:** to reinforce the associative property of matrix multiplication by comparing two mathematically equivalent computation paths and seeing how grouping affects intermediate work.
