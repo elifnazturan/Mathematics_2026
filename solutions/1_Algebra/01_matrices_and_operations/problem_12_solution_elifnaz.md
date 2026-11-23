@@ -53,6 +53,3 @@ $$A^{n+1} = \begin{pmatrix} 1 & n + 1 \\\\ 0 & 1 \end{pmatrix}$$
   * Entry $(2, 2)$ is $0 \cdot 1 + 1 \cdot 1 = 1$.
   * Because the resulting matrix matches the conjectured formula with $n$ replaced by $n + 1$, the formula holds for $n + 1$ whenever it holds for $n$.
 
----
-
-> **Purpose of this exercise:** to practice spotting a pattern across matrix powers, forming a general conjecture, and seeing algebraically why multiplying by $A$ advances the formula from $n$ to $n + 1$.
