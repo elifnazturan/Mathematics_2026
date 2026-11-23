@@ -54,6 +54,3 @@ $$3A - 2B = \begin{pmatrix} -5 & 10 \\\\ -3 & -1 \end{pmatrix}$$
 * **Explanation and Method Used:** Matrix addition is defined **entry-by-entry** (elementwise), so the entry in row $i$ and column $j$ of the sum comes from adding entry $(i, j)$ of the first matrix to entry $(i, j)$ of the second matrix.
 * **Dimension Requirement and Verification:** Both matrices must have the **same number of rows and columns** so every entry has a matching position. If their sizes differ, some entries lack a counterpart and the sum is undefined; here both $A$ and $B$ are $2 \times 2$, so every position $(i, j)$ exists in both.
 
----
-
-> **Purpose of this exercise:** to practice entrywise operations, scalar multiplication, result verification, and the requirement of matching matrix dimensions.
