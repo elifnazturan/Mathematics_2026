@@ -40,6 +40,3 @@ $$BA = \begin{pmatrix} 2 & 4 \\\\ 3 & 7 \end{pmatrix}$$
 * **Explanation and Method Used:** Unlike ordinary multiplication of real numbers (where $a \cdot b = b \cdot a$), **matrix multiplication is noncommutative**: changing the order of the factors generally changes the result. Because entry $(i, j)$ pairs a row of the first matrix with a column of the second matrix, swapping $A$ and $B$ pairs completely different rows and columns—and in terms of linear transformations, $AB$ applies transformation $B$ first and then $A$, whereas $BA$ applies $A$ first and then $B$.
 * **Verification:** Comparing entry $(1, 1)$ shows $8 \neq 2$, and comparing entry $(1, 2)$ shows $2 \neq 4$, confirming that $AB$ and $BA$ are not equal.
 
----
-
-> **Purpose of this exercise:** to highlight that matrix multiplication depends on factor order (noncommutativity), contrasting it with ordinary numerical multiplication.
