@@ -71,6 +71,3 @@ $$A^k = \begin{pmatrix} 2^k & k \cdot 2^{k-1} \\\\ 0 & 2^k \end{pmatrix} \qquad 
 
 * **Verification:** Substituting $k = 1$, $k = 2$, and $k = 3$ into the formula gives $\begin{pmatrix} 2 & 1 \\\\ 0 & 2 \end{pmatrix}$, $\begin{pmatrix} 4 & 4 \\\\ 0 & 4 \end{pmatrix}$, and $\begin{pmatrix} 8 & 12 \\\\ 0 & 8 \end{pmatrix}$, matching all computed powers.
 
----
-
-> **Purpose of this exercise:** to understand the neutral roles of the identity matrix under multiplication and the zero matrix under addition, and to recognize structure and patterns in powers of a matrix.
