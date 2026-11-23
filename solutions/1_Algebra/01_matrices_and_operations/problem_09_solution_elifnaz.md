@@ -46,6 +46,3 @@ $$S(Rx) = \begin{pmatrix} -4 \\\\ 1 \end{pmatrix}$$
   * In **$S(Rx)$**, the vector $\binom{1}{2}$ is first rotated $90^\circ$ counterclockwise to $\binom{-2}{1}$ and then stretched horizontally by $2$, directly doubling the already negative $x$-coordinate $-2$ to $-4$ while leaving the $y$-coordinate at $1$.
 * **Verification:** Their first coordinates differ ($-2 \neq -4$) and their second coordinates also differ ($2 \neq 1$), confirming both algebraically and geometrically that the order of transformations changes the final vector.
 
----
-
-> **Purpose of this exercise:** to interpret matrix products and nested matrix-vector products as compositions of linear transformations and see geometrically why the order of operations matters.
