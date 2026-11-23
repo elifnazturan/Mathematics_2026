@@ -66,6 +66,4 @@ $$(AB)^T = \begin{pmatrix} 2 & 8 \\\\ 11 & 23 \end{pmatrix} = B^T A^T$$
 
 * **Verification:** Every corresponding entry of $(AB)^T$ and $B^T A^T$ matches ($2 = 2$, $8 = 8$, $11 = 11$, $23 = 23$), confirming $(AB)^T = B^T A^T$ in this example.
 
----
 
-> **Purpose of this exercise:** to practice transposing matrices and vectors and verify how transposition reverses multiplication order in $(AB)^T = B^T A^T$.
