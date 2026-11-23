@@ -52,6 +52,4 @@ $$A A^{-1} = \frac{1}{22}\begin{pmatrix} 3 & -2 \\\\ 5 & 4 \end{pmatrix}\begin{p
 
   This confirms $A$ is invertible, while $\det(B) = 0$ prevents dividing by $\det(B)$ to form $B^{-1}$.
 
----
 
-> **Purpose of this exercise:** to introduce the simplest determinant calculation and immediately connect it to invertibility.
