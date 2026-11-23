@@ -61,6 +61,4 @@ $$A^{(3)} = \begin{pmatrix} 1 & 2 & -1 \\\\ 0 & 3 & 2 \\\\ 0 & 0 & 3 \end{pmatri
   * *Inverse operation:* **$R_2 \leftrightarrow R_3$** (swap rows $2$ and $3$ again).
   * *Verification:* Swapping $(0, 3, 2)$ and $(0, 0, 3)$ back returns $A^{(2)}$.
 
----
 
-> **Purpose of this exercise:** to practice elementary row operations step by step and understand that each row operation is invertible as preparation for Gaussian elimination.
