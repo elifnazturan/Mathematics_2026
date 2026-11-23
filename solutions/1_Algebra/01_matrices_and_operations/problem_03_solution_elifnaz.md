@@ -54,6 +54,3 @@ $$A_{2\times 3}, \qquad B_{3\times 4}, \qquad C_{4\times 2}, \qquad D_{2\times 2
   * *Result:* **Defined**, size is **$2 \times 3$**.
   * *Verification:* Each row of $D$ has $2$ entries and each column of $A$ has $2$ entries, yielding a $2 \times 3$ product matrix.
 
----
-
-> **Purpose of this exercise:** to check dimension compatibility before computing products and see how multiplication order affects whether a product exists and what size it has.
