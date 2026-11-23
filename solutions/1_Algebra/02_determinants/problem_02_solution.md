@@ -57,6 +57,3 @@ $$\det(A) = 33$$
 
 * **Verification:** Both Sarrus's rule ($33$) and first-column expansion ($11 + 22 = 33$) give the exact same value, confirming $\det(A) = 33$ and showing $A$ is invertible ($\det(A) \neq 0$).
 
----
-
-> **Purpose of this exercise:** to practice a foundational $3 \times 3$ determinant method (Sarrus's rule) and build the habit of checking a result with a determinant property rather than repeating the same calculation.
