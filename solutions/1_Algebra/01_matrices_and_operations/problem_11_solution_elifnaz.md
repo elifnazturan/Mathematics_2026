@@ -51,6 +51,4 @@ $$B = \begin{pmatrix} a & b \\\\ 0 & a \end{pmatrix}, \qquad a, b \in \mathbb{R}
 
 * **Verification:** Notice that both $I$ and $A$ commute with $A$ ($AI = IA = A$ and $A \cdot A = A \cdot A$), and matrix multiplication is linear, so any linear combination $\alpha I + \beta A$ automatically commutes with $A$. Setting $\alpha = a - b$ and $\beta = b$ gives $(a - b)\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} + b\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \end{pmatrix} = \begin{pmatrix} a & b \\\\ 0 & a \end{pmatrix}$.
 
----
 
-> **Purpose of this exercise:** to deepen understanding of noncommutativity by finding the exact algebraic conditions and structure of matrices that commute with a given matrix.
