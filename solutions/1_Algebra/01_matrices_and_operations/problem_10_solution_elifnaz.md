@@ -65,6 +65,3 @@ $$AB = A\begin{pmatrix} b_1 & b_2 \end{pmatrix} = \begin{pmatrix} Ab_1 & Ab_2 \e
 
 * **Verification:** Comparing column $1$ of $AB$, $\begin{pmatrix} -1 \\\\ 2 \end{pmatrix}$, with $Ab_1 = \begin{pmatrix} -1 \\\\ 2 \end{pmatrix}$ shows they are identical, and comparing column $2$ of $AB$, $\begin{pmatrix} 2 \\\\ 1 \end{pmatrix}$, with $Ab_2 = \begin{pmatrix} 2 \\\\ 1 \end{pmatrix}$ confirms the same equality.
 
----
-
-> **Purpose of this exercise:** to generalize matrix-vector multiplication to full matrix multiplication by viewing the columns of $AB$ as $A$ acting on each column of $B$.
