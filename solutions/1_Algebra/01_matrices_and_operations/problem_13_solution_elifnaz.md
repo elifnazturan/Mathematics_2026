@@ -59,6 +59,4 @@ $$F\begin{pmatrix} F_k \\\\ F_{k-1} \end{pmatrix} = \begin{pmatrix} F_{k+1} \\\\
 
 * **Verification:** Taking $a = 1$ and $b = 1$ gives $F\begin{pmatrix} 1 \\\\ 1 \end{pmatrix} = \begin{pmatrix} 2 \\\\ 1 \end{pmatrix}$; applying $F$ once more gives $F\begin{pmatrix} 2 \\\\ 1 \end{pmatrix} = \begin{pmatrix} 3 \\\\ 2 \end{pmatrix}$, generating the next Fibonacci numbers step by step.
 
----
 
-> **Purpose of this exercise:** to connect matrix powers with a simple numerical recurrence relation and see how a single matrix-vector multiplication advances a two-term recurrence by one step.
