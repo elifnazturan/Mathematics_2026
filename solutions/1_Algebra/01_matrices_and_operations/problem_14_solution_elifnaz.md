@@ -47,6 +47,3 @@ $$R\!\left(\frac{\pi}{2}\right)R\!\left(\frac{\pi}{2}\right) = \begin{pmatrix} 0
 * **Result:** Rotating first by $\beta$ and then by $\alpha$ has the exact same geometric effect on the plane as a **single counterclockwise rotation by the sum of the angles, $\alpha + \beta$**.
 * **Verification:** In the $\alpha = \frac{\pi}{2}, \beta = \frac{\pi}{2}$ check above, two consecutive $90^\circ$ counterclockwise turns move a vector to a $180^\circ$ turn, which is given directly by $R(\pi)$.
 
----
-
-> **Purpose of this exercise:** to show consistency between matrix algebra and the geometry of composing planar rotations.
