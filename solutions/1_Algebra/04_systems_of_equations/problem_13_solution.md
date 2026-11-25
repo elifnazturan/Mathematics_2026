@@ -1,82 +1,70 @@
-# Exercise 12. Homogeneous System
+# Exercise 13. Does Every Equation Add New Information?
 
 ## Question
 
-We are given the homogeneous linear system of three equations in three unknowns $(x, y, z)$:
+We are given the linear system of three equations in three unknowns $(x_1, x_2, x_3)$:
 
 $$
 \begin{cases}
-x + 2y - z = 0, \\
-2x + 4y - 2z = 0, \\
-x - y + 2z = 0.
+x_1 + x_2 = 10, \\
+x_2 + x_3 = 8, \\
+x_1 - x_3 = 2.
 \end{cases}
 $$
 
 We need to:
-1. Solve the system and write all solutions in parametric form.
-2. Explain why $(0, 0, 0)$ always satisfies a homogeneous system.
+1. Solve the system and describe its solution set.
+2. Check whether all three equations are independently necessary to describe the solution set.
+3. If one equation follows from the others, show this explicitly by calculation.
 
 ## Solution
 
-### 1. Row Reduction and Parametric Solution
+### 1. Solving the System
 
-Write the augmented matrix for the homogeneous system:
-
-$$
-\begin{pmatrix}
-1 & 2 & -1 & \mid & 0 \\
-2 & 4 & -2 & \mid & 0 \\
-1 & -1 & 2 & \mid & 0 \\
-\end{pmatrix}
-$$
-
-Eliminate $x$ from the second and third rows by applying $R_2 \leftarrow R_2 - 2R_1$ and $R_3 \leftarrow R_3 - R_1$:
+Let $x_3 = t$, where $t \in \mathbb{R}$ is a real parameter. From the second equation $x_2 + x_3 = 8$:
 
 $$
-\begin{pmatrix}
-1 & 2 & -1 & \mid & 0 \\
-0 & 0 & 0 & \mid & 0 \\
-0 & -3 & 3 & \mid & 0 \\
-\end{pmatrix}
+x_2 = 8 - t
 $$
 
-Swap the second and third rows ($R_2 \leftrightarrow R_3$) to obtain row-echelon form:
+Substitute $x_3 = t$ into the third equation $x_1 - x_3 = 2$:
 
 $$
-\begin{pmatrix}
-1 & 2 & -1 & \mid & 0 \\
-0 & -3 & 3 & \mid & 0 \\
-0 & 0 & 0 & \mid & 0 \\
-\end{pmatrix}
+x_1 = 2 + t
 $$
 
-The non-trivial equations from the row-echelon matrix are
+Check the first equation $x_1 + x_2 = 10$ with these expressions:
+
+$$
+(2 + t) + (8 - t) = 10
+$$
+
+The first equation holds identically for every $t \in \mathbb{R}$. Thus, the system has infinitely many solutions, given in parametric form by
 
 $$
 \begin{cases}
-x + 2y - z = 0, \\
--3y + 3z = 0.
+x_1 = 2 + t, \\
+x_2 = 8 - t, \\
+x_3 = t, \quad t \in \mathbb{R}.
 \end{cases}
 $$
 
-From the second equation, $-3y + 3z = 0$ gives $y = z$. Let $z = t$, where $t \in \mathbb{R}$ is a real parameter; then $y = t$.
+### 2. Redundancy and Independence of the Equations
 
-Substitute $y = t$ and $z = t$ into the first equation:
+Not all three equations add independent information to the solution set: the third equation is redundant because it can be obtained by combining the first two equations.
 
-$$
-x + 2t - t = 0 \implies x + t = 0 \implies x = -t
-$$
+### 3. Explicit Calculation Showing One Equation Follows from the Others
 
-Thus, all solutions in parametric form are given by
+Subtract the second equation $(x_2 + x_3 = 8)$ from the first equation $(x_1 + x_2 = 10)$:
 
 $$
-\begin{cases}
-x = -t, \\
-y = t, \\
-z = t, \quad t \in \mathbb{R}.
-\end{cases}
+(x_1 + x_2) - (x_2 + x_3) = 10 - 8
 $$
 
-### 2. Why $(0, 0, 0)$ Always Satisfies a Homogeneous System
+Simplifying both sides gives:
 
-In a homogeneous linear system $Ax = 0$, every equation has zero on the right-hand side and is a linear combination of the unknowns with no constant term. Substituting $(x, y, z) = (0, 0, 0)$ multiplies every unknown by $0$ and adds zeros together, so the left-hand side of every equation evaluates to $0$, matching the right-hand side $0$ (in matrix form, $A \cdot 0 = 0$). Therefore, the trivial solution $(0, 0, 0)$ is always a solution—and here corresponds to choosing the parameter $t = 0$.
+$$
+x_1 - x_3 = 2
+$$
+
+This is exactly the third equation. Therefore, any pair $(x_1, x_2, x_3)$ that satisfies the first two equations automatically satisfies the third equation, so the first two equations alone completely determine the solution set.
