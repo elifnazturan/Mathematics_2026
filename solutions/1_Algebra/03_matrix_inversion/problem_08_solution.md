@@ -1,67 +1,76 @@
 # Exercise 8. Inverse of a Transformation
 
-**Given:**
+## Question
 
-$$S = \begin{pmatrix} 2 & 0 \\\\ 0 & \frac{1}{2} \end{pmatrix}$$
+We are given the $2 \times 2$ matrix describing a scaling of the plane:
 
----
+$$
+S = \begin{pmatrix}
+2 & 0 \\
+0 & \frac{1}{2} \\
+\end{pmatrix}
+$$
 
-### 1. Find $S^{-1}$ and Explain What the Inverse Transformation Does Geometrically.
+We need to:
+1. Find $S^{-1}$.
+2. Explain geometrically what the inverse transformation does.
+3. Check the action of the pair $S, S^{-1}$ on one simple vector.
 
-* **Method and Property Used:**
-  * **Diagonal Matrix Inverse Rule:** A diagonal matrix $D = \begin{pmatrix} d_1 & 0 \\\\ 0 & d_2 \end{pmatrix}$ with $d_1, d_2 \neq 0$ is invertible, and its inverse is obtained by taking the reciprocal of each diagonal entry:
+## Solution
 
-$$D^{-1} = \begin{pmatrix} \frac{1}{d_1} & 0 \\\\ 0 & \frac{1}{d_2} \end{pmatrix}$$
+### 1. Finding $S^{-1}$
 
-  * **Geometric Interpretation of Diagonal Scaling:** Applying $D = \begin{pmatrix} d_1 & 0 \\\\ 0 & d_2 \end{pmatrix}$ to $\begin{pmatrix} x \\\\ y \end{pmatrix}$ yields $\begin{pmatrix} d_1 x \\\\ d_2 y \end{pmatrix}$, scaling the $x$-coordinate by $d_1$ and the $y$-coordinate by $d_2$.
+Because $S$ is a diagonal matrix with nonzero diagonal entries ($2 \neq 0$ and $\frac{1}{2} \neq 0$), its inverse is obtained by taking the reciprocals of the diagonal entries:
 
-* **Main steps:**
-  * **Step 1 — Compute $\det(S)$ to confirm invertibility:**
+$$
+S^{-1} = \begin{pmatrix}
+\frac{1}{2} & 0 \\
+0 & 2 \\
+\end{pmatrix}
+$$
 
-$$\det(S) = (2)\left(\frac{1}{2}\right) - (0)(0) = 1 \neq 0$$
+### 2. Geometric Meaning of the Inverse Transformation
 
-  * **Step 2 — Compute $S^{-1}$:**
+The matrix $S$ stretches the horizontal ($x$-) coordinate by a factor of $2$ and shrinks the vertical ($y$-) coordinate by a factor of $\frac{1}{2}$. The inverse transformation $S^{-1}$ undoes this scaling: it shrinks the horizontal ($x$-) coordinate by a factor of $\frac{1}{2}$ and stretches the vertical ($y$-) coordinate by a factor of $2$, returning every scaled point back to its original position.
 
-$$S^{-1} = \begin{pmatrix} \frac{1}{2} & 0 \\\\ 0 & \frac{1}{1/2} \end{pmatrix} = \begin{pmatrix} \frac{1}{2} & 0 \\\\ 0 & 2 \end{pmatrix}$$
+### 3. Checking the Action of $S$ and $S^{-1}$ on a Simple Vector
 
-  * **Step 3 — Geometric Explanation:**
-    * The original transformation $S\begin{pmatrix} x \\\\ y \end{pmatrix} = \begin{pmatrix} 2x \\\\ \frac{1}{2}y \end{pmatrix}$ **stretches** the plane horizontally by a factor of $2$ (along the $x$-axis) and **compresses** it vertically by a factor of $\frac{1}{2}$ (along the $y$-axis).
-    * The inverse transformation $S^{-1}\begin{pmatrix} x \\\\ y \end{pmatrix} = \begin{pmatrix} \frac{1}{2}x \\\\ 2y \end{pmatrix}$ undoes both scalings simultaneously: it **compresses** horizontally by a factor of $\frac{1}{2}$ (halving the $x$-coordinate) and **stretches** vertically by a factor of $2$ (doubling the $y$-coordinate).
+Take the simple vector $v$ with entries $1$ and $1$.
 
-* **Result:**
+First, apply $S$ to $v$:
 
-$$S^{-1} = \begin{pmatrix} \frac{1}{2} & 0 \\\\ 0 & 2 \end{pmatrix}$$
+$$
+Sv = \begin{pmatrix}
+2 & 0 \\
+0 & \frac{1}{2} \\
+\end{pmatrix} \begin{pmatrix}
+1 \\
+1 \\
+\end{pmatrix} = \begin{pmatrix}
+2 \cdot 1 + 0 \cdot 1 \\
+0 \cdot 1 + \frac{1}{2} \cdot 1 \\
+\end{pmatrix} = \begin{pmatrix}
+2 \\
+\frac{1}{2} \\
+\end{pmatrix}
+$$
 
-  Geometrically, $S^{-1}$ compresses horizontally by $\frac{1}{2}$ and stretches vertically by $2$, reversing the horizontal stretch ($2$) and vertical compression ($\frac{1}{2}$) of $S$.
+Next, apply $S^{-1}$ to the transformed vector $Sv$:
 
-* **Verification:** Check that $S S^{-1} = I_2$ and $S^{-1} S = I_2$:
+$$
+S^{-1}(Sv) = \begin{pmatrix}
+\frac{1}{2} & 0 \\
+0 & 2 \\
+\end{pmatrix} \begin{pmatrix}
+2 \\
+\frac{1}{2} \\
+\end{pmatrix} = \begin{pmatrix}
+\frac{1}{2} \cdot 2 + 0 \cdot \frac{1}{2} \\
+0 \cdot 2 + 2 \cdot \frac{1}{2} \\
+\end{pmatrix} = \begin{pmatrix}
+1 \\
+1 \\
+\end{pmatrix} = v
+$$
 
-$$S S^{-1} = \begin{pmatrix} 2 & 0 \\\\ 0 & \frac{1}{2} \end{pmatrix}\begin{pmatrix} \frac{1}{2} & 0 \\\\ 0 & 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} = I_2, \qquad S^{-1} S = \begin{pmatrix} \frac{1}{2} & 0 \\\\ 0 & 2 \end{pmatrix}\begin{pmatrix} 2 & 0 \\\\ 0 & \frac{1}{2} \end{pmatrix} = \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} = I_2$$
-
----
-
-### 2. Check the Effect of the Pair $(S, S^{-1})$ on a Single Simple Vector.
-
-* **Method and Property Used:** Apply $S$ followed by $S^{-1}$ (and $S^{-1}$ followed by $S$) to a simple test vector $v \in \mathbb{R}^2$ to verify that $S^{-1}(Sv) = v$ and $S(S^{-1}v) = v$.
-
-* **Main steps:**
-  * Choose the simple vector $v = \begin{pmatrix} 3 \\\\ 4 \end{pmatrix}$.
-  * **Apply $S$ to $v$:**
-
-$$w = S v = \begin{pmatrix} 2 & 0 \\\\ 0 & \frac{1}{2} \end{pmatrix}\begin{pmatrix} 3 \\\\ 4 \end{pmatrix} = \begin{pmatrix} 2(3) \\\\ \frac{1}{2}(4) \end{pmatrix} = \begin{pmatrix} 6 \\\\ 2 \end{pmatrix}$$
-
-    *(Horizontally stretched from $3$ to $6$, vertically compressed from $4$ to $2$.)*
-
-  * **Apply $S^{-1}$ to the transformed vector $w = Sv$:**
-
-$$S^{-1}(S v) = S^{-1} w = \begin{pmatrix} \frac{1}{2} & 0 \\\\ 0 & 2 \end{pmatrix}\begin{pmatrix} 6 \\\\ 2 \end{pmatrix} = \begin{pmatrix} \frac{1}{2}(6) \\\\ 2(2) \end{pmatrix} = \begin{pmatrix} 3 \\\\ 4 \end{pmatrix} = v$$
-
-    *(Horizontally compressed from $6$ back to $3$, vertically stretched from $2$ back to $4$.)*
-
-* **Result:**
-
-$$v = \begin{pmatrix} 3 \\\\ 4 \end{pmatrix} \xrightarrow{\;S\;} \begin{pmatrix} 6 \\\\ 2 \end{pmatrix} \xrightarrow{\;S^{-1}\;} \begin{pmatrix} 3 \\\\ 4 \end{pmatrix}$$
-
-* **Verification:** Reversing the order on the same vector $v = \begin{pmatrix} 3 \\\\ 4 \end{pmatrix}$ also restores $v$:
-
-$$S(S^{-1}v) = \begin{pmatrix} 2 & 0 \\\\ 0 & \frac{1}{2} \end{pmatrix}\begin{pmatrix} \frac{3}{2} \\\\ 8 \end{pmatrix} = \begin{pmatrix} 3 \\\\ 4 \end{pmatrix} = v$$
+The pair $S, S^{-1}$ maps $v$ to the vector with entries $2$ and $\frac{1}{2}$ and then back to $v$, confirming that $S^{-1}$ undoes $S$.
