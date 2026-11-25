@@ -1,34 +1,109 @@
-# Exercise 6. Solving a System Using an Inverse
+# Exercise 6. Solving a System Using the Inverse
 
-**Given:**
+## Question
 
-$$A x = b, \qquad \text{where } A = \begin{pmatrix} 2 & 1 \\\\ 1 & 3 \end{pmatrix}, \qquad b = \begin{pmatrix} 5 \\\\ 7 \end{pmatrix}$$
+We are given the linear system $Ax = b$, where:
 
----
+$$
+A = \begin{pmatrix}
+2 & 1 \\
+1 & 3 \\
+\end{pmatrix}, \quad b = \begin{pmatrix}
+5 \\
+7 \\
+\end{pmatrix}
+$$
 
-### Solve $Ax = b$ Using $x = A^{-1}b$, Then Substitute the Resulting Vector Back Into the Equation and Check the Result.
+We need to:
+1. Solve $Ax = b$ using $x = A^{-1}b$.
+2. Substitute the resulting vector $x$ back into the equation $Ax = b$ and check the result.
 
-* **Method and Property Used:**
-  * **Solving a Linear System via Matrix Inversion:** When $A$ is invertible ($\det(A) \neq 0$), left-multiplying both sides of $Ax = b$ by $A^{-1}$ yields the unique solution $x = A^{-1}b$.
-  * **Explicit $2 \times 2$ Inverse Formula:** For $A = \begin{pmatrix} a & b \\\\ c & d \end{pmatrix}$, $A^{-1} = \frac{1}{ad - bc}\begin{pmatrix} d & -b \\\\ -c & a \end{pmatrix}$.
+## Solution
 
-* **Main steps:**
-  * **Step 1 — Compute $\det(A)$ and find $A^{-1}$:**
+### 1. Finding $A^{-1}$ and Computing $x = A^{-1}b$
 
-$$\det(A) = (2)(3) - (1)(1) = 6 - 1 = 5 \neq 0$$
+First, compute the determinant of the $2 \times 2$ matrix $A$:
 
-$$A^{-1} = \frac{1}{5}\begin{pmatrix} 3 & -1 \\\\ -1 & 2 \end{pmatrix} = \begin{pmatrix} \frac{3}{5} & -\frac{1}{5} \\\\ -\frac{1}{5} & \frac{2}{5} \end{pmatrix}$$
+$$
+\det(A) = (2)(3) - (1)(1) = 6 - 1 = 5
+$$
 
-  * **Step 2 — Compute $x = A^{-1}b$:**
+Since $\det(A) = 5 \neq 0$, matrix $A$ is invertible. Using the inverse formula for a $2 \times 2$ matrix:
 
-$$x = A^{-1}b = \frac{1}{5}\begin{pmatrix} 3 & -1 \\\\ -1 & 2 \end{pmatrix}\begin{pmatrix} 5 \\\\ 7 \end{pmatrix} = \frac{1}{5}\begin{pmatrix} (3)(5) + (-1)(7) \\\\ (-1)(5) + (2)(7) \end{pmatrix} = \frac{1}{5}\begin{pmatrix} 15 - 7 \\\\ -5 + 14 \end{pmatrix} = \begin{pmatrix} \frac{8}{5} \\\\ \frac{9}{5} \end{pmatrix}$$
+$$
+A^{-1} = \frac{1}{\det(A)} \begin{pmatrix}
+3 & -1 \\
+-1 & 2 \\
+\end{pmatrix} = \frac{1}{5} \begin{pmatrix}
+3 & -1 \\
+-1 & 2 \\
+\end{pmatrix} = \begin{pmatrix}
+\frac{3}{5} & -\frac{1}{5} \\
+-\frac{1}{5} & \frac{2}{5} \\
+\end{pmatrix}
+$$
 
-* **Result:**
+Multiplying both sides of $Ax = b$ on the left by $A^{-1}$ gives $x = A^{-1}b$:
 
-$$x = \begin{pmatrix} \frac{8}{5} \\\\ \frac{9}{5} \end{pmatrix} \qquad \left(x_1 = \frac{8}{5}, \quad x_2 = \frac{9}{5}\right)$$
+$$
+x = \begin{pmatrix}
+\frac{3}{5} & -\frac{1}{5} \\
+-\frac{1}{5} & \frac{2}{5} \\
+\end{pmatrix} \begin{pmatrix}
+5 \\
+7 \\
+\end{pmatrix}
+$$
 
-* **Verification:** Substitute $x = \begin{pmatrix} \frac{8}{5} \\\\ \frac{9}{5} \end{pmatrix}$ back into the original equation $Ax = b$:
+Computing each component of $x$:
 
-$$A x = \begin{pmatrix} 2 & 1 \\\\ 1 & 3 \end{pmatrix}\begin{pmatrix} \frac{8}{5} \\\\ \frac{9}{5} \end{pmatrix} = \begin{pmatrix} 2\left(\frac{8}{5}\right) + 1\left(\frac{9}{5}\right) \\\\ 1\left(\frac{8}{5}\right) + 3\left(\frac{9}{5}\right) \end{pmatrix} = \begin{pmatrix} \frac{16}{5} + \frac{9}{5} \\\\ \frac{8}{5} + \frac{27}{5} \end{pmatrix} = \begin{pmatrix} \frac{25}{5} \\\\ \frac{35}{5} \end{pmatrix} = \begin{pmatrix} 5 \\\\ 7 \end{pmatrix} = b$$
+$$
+x_1 = \frac{3}{5}(5) + \left(-\frac{1}{5}\right)(7) = 3 - \frac{7}{5} = \frac{8}{5}
+$$
 
-  Since $Ax = b$ holds identically, the solution vector is verified.
+$$
+x_2 = \left(-\frac{1}{5}\right)(5) + \frac{2}{5}(7) = -1 + \frac{14}{5} = \frac{9}{5}
+$$
+
+Thus, the solution vector is:
+
+$$
+x = \begin{pmatrix}
+\frac{8}{5} \\
+\frac{9}{5} \\
+\end{pmatrix}
+$$
+
+### 2. Substituting Back into $Ax = b$ to Check
+
+We substitute $x$ with entries $\frac{8}{5}$ and $\frac{9}{5}$ into the left-hand side $Ax$:
+
+$$
+Ax = \begin{pmatrix}
+2 & 1 \\
+1 & 3 \\
+\end{pmatrix} \begin{pmatrix}
+\frac{8}{5} \\
+\frac{9}{5} \\
+\end{pmatrix} = \begin{pmatrix}
+2 \cdot \frac{8}{5} + 1 \cdot \frac{9}{5} \\
+1 \cdot \frac{8}{5} + 3 \cdot \frac{9}{5} \\
+\end{pmatrix}
+$$
+
+Simplifying each entry:
+
+$$
+Ax = \begin{pmatrix}
+\frac{16}{5} + \frac{9}{5} \\
+\frac{8}{5} + \frac{27}{5} \\
+\end{pmatrix} = \begin{pmatrix}
+\frac{25}{5} \\
+\frac{35}{5} \\
+\end{pmatrix} = \begin{pmatrix}
+5 \\
+7 \\
+\end{pmatrix} = b
+$$
+
+Since $Ax = b$ holds, the solution vector $x$ is verified.
