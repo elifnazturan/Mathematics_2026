@@ -1,59 +1,88 @@
 # Exercise 12. A Parameter Revealed by a Row Operation
 
-**Given:**
+## Question
 
-$$A(t) = \begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 4 & t \\\\ 0 & 1 & 1 \end{pmatrix}$$
+We are given the $3 \times 3$ matrix depending on a parameter $t$:
 
----
+$$
+A(t) = \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 4 & t \\
+0 & 1 & 1 \\
+\end{pmatrix}
+$$
 
-### 1. Find All Values of $t$ for Which $A(t)$ Is Not Invertible (Applying $R_2 \leftarrow R_2 - 2R_1$ First).
+We need to:
+1. First perform the row operation $R_2 \leftarrow R_2 - 2R_1$ before computing the determinant.
+2. Use the resulting matrix structure to find all values of $t$ for which $A(t)$ is not invertible.
+3. Explain what special happens to the rows of the matrix for the value of $t$ found.
 
-* **Method and Property Used:**
-  * A square matrix is **not invertible** (singular) if and only if its determinant equals zero: $\det(A(t)) = 0$.
-  * Adding a scalar multiple of one row to another row ($R_2 \leftarrow R_2 - 2R_1$) leaves the determinant **unchanged**.
+## Solution
 
-* **Main steps:**
-  * Apply $R_2 \leftarrow R_2 - 2R_1$ to $A(t)$:
-    * New Row $2$: $\begin{pmatrix} 2 - 2(1) & 4 - 2(2) & t - 2(3) \end{pmatrix} = \begin{pmatrix} 0 & 0 & t - 6 \end{pmatrix}$.
-    * Thus:
+### 1. Applying the Row Operation $R_2 \leftarrow R_2 - 2R_1$
 
-$$\det(A(t)) = \det\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 0 & t - 6 \\\\ 0 & 1 & 1 \end{pmatrix}$$
+Adding $-2$ times the first row to the second row does not change the determinant of $A(t)$:
 
-  * Expand along the first column (since the $(2,1)$ and $(3,1)$ entries are $0$):
+$$
+R_2^{\mathrm{new}} = (2, 4, t) - 2(1, 2, 3) = (0, 0, t - 6)
+$$
 
-$$\det(A(t)) = 1 \cdot \det\begin{pmatrix} 0 & t - 6 \\\\ 1 & 1 \end{pmatrix} = (0)(1) - (t - 6)(1) = -(t - 6) = 6 - t$$
+This gives the equivalent matrix:
 
-  * Set $\det(A(t)) = 0$ and solve for $t$:
+$$
+A'(t) = \begin{pmatrix}
+1 & 2 & 3 \\
+0 & 0 & t - 6 \\
+0 & 1 & 1 \\
+\end{pmatrix}
+$$
 
-$$6 - t = 0 \implies t = 6$$
+with $\det(A(t)) = \det(A'(t))$.
 
-* **Result:**
+### 2. Computing the Determinant and Finding Non-Invertible Values of $t$
 
-$$t = 6$$
+Expanding $\det(A'(t))$ along the first column (since the entries below $1$ are $0$):
 
-* **Verification:** Direct cofactor expansion of the original matrix $A(t)$ along the first column gives:
+$$
+\det(A'(t)) = 1 \cdot \det \begin{pmatrix}
+0 & t - 6 \\
+1 & 1 \\
+\end{pmatrix}
+$$
 
-$$\det(A(t)) = 1 \cdot \det\begin{pmatrix} 4 & t \\\\ 1 & 1 \end{pmatrix} - 2 \cdot \det\begin{pmatrix} 2 & 3 \\\\ 1 & 1 \end{pmatrix} + 0 = (4 - t) - 2(2 - 3) = 4 - t + 2 = 6 - t$$
+Computing the $2 \times 2$ determinant:
 
-  Setting $6 - t = 0$ yields $t = 6$, matching the row-reduced calculation.
+$$
+\det \begin{pmatrix}
+0 & t - 6 \\
+1 & 1 \\
+\end{pmatrix} = (0)(1) - (t - 6)(1) = -(t - 6) = 6 - t
+$$
 
----
+Thus:
 
-### 2. Explain the Special Situation That Occurs in the Rows for This Value of the Parameter.
+$$
+\det(A(t)) = 6 - t
+$$
 
-* **Explanation and Method Used:** When $t = 6$, the row operation $R_2 \leftarrow R_2 - 2R_1$ turns the entire second row into zeros, revealing **linear dependence** among the rows of $A(6)$.
+A square matrix is not invertible if and only if its determinant is zero. Setting $\det(A(t)) = 0$:
 
-* **Special Row Behavior at $t = 6$:**
-  * For $t = 6$, the original second row is $\begin{pmatrix} 2 & 4 & 6 \end{pmatrix}$, which is **exact scalar multiple $2$ times** the first row $\begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$:
+$$
+6 - t = 0
+$$
 
-$$R_2 = 2 R_1$$
+$$
+t = 6
+$$
 
-  * Consequently, after $R_2 \leftarrow R_2 - 2R_1$, Row $2$ becomes the zero row $\begin{pmatrix} 0 & 0 & 0 \end{pmatrix}$, so the matrix has only two linearly independent rows ($\text{rank}(A(6)) = 2 < 3$).
+So $A(t)$ is not invertible when $t = 6$ (and is invertible for all $t \neq 6$).
 
-* **Result:** At $t = 6$, Row $2$ equals $2$ times Row $1$ ($\begin{pmatrix} 2 & 4 & 6 \end{pmatrix} = 2\begin{pmatrix} 1 & 2 & 3 \end{pmatrix}$), reducing to $\begin{pmatrix} 0 & 0 & 0 \end{pmatrix}$ under $R_2 \leftarrow R_2 - 2R_1$ and making $A(6)$ singular.
+### 3. What Happens to the Rows When $t = 6$
 
-* **Verification:** Substituting $t = 6$ gives:
+When $t = 6$, the second row of the original matrix $A(6)$ is $(2, 4, 6)$, which is exactly twice the first row $(1, 2, 3)$:
 
-$$A(6) = \begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 4 & 6 \\\\ 0 & 1 & 1 \end{pmatrix}$$
+$$
+R_2 = 2R_1
+$$
 
-  Since $2R_1 - R_2 + 0R_3 = \begin{pmatrix} 0 & 0 & 0 \end{pmatrix}$ is a nontrivial linear relation among the rows, $\det(A(6)) = 0$ and $A(6)$ is not invertible.
+In the transformed matrix $A'(6)$, the entire new second row becomes $(0, 0, 0)$ (a zero row). Because the rows are linearly dependent—one row is a scalar multiple of another—the matrix has rank less than $3$, its determinant is $0$, and it is not invertible.
