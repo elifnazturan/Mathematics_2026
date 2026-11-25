@@ -1,35 +1,89 @@
 # Exercise 1. Definition of the Inverse
 
-**Given:**
+## Question
 
-$$A = \begin{pmatrix} 2 & 1 \\\\ 1 & 1 \end{pmatrix}, \qquad B = \begin{pmatrix} 1 & -1 \\\\ -1 & 2 \end{pmatrix}$$
+We are given two $2 \times 2$ matrices:
 
----
+$$
+A = \begin{pmatrix}
+2 & 1 \\
+1 & 1 \\
+\end{pmatrix}, \quad B = \begin{pmatrix}
+1 & -1 \\
+-1 & 2 \\
+\end{pmatrix}
+$$
 
-### Check Without Using a Formula That $B = A^{-1}$ by Computing $AB$ and $BA$ and Relating the Result to the Definition of the Inverse.
+We need to:
+1. Check, without using an inverse formula, whether $B = A^{-1}$.
+2. Compute the products $AB$ and $BA$ and relate the results to the definition of the inverse matrix.
 
-* **Method and Property Used:**
-  * **Definition of the Matrix Inverse:** An $n \times n$ square matrix $A$ is invertible with inverse $B = A^{-1}$ if and only if multiplying $A$ and $B$ in **both orders** yields the $n \times n$ identity matrix $I_n$:
+## Solution
 
-$$AB = I_n \qquad \text{and} \qquad BA = I_n$$
+### 1. Computing $AB$ and $BA$
 
-  * **Matrix Multiplication:** The $(i, j)$-entry of a product $XY$ is the dot product of row $i$ of $X$ with column $j$ of $Y$.
+By the definition of matrix multiplication, the $(i, j)$ entry of a product is the dot product of row $i$ of the first matrix with column $j$ of the second matrix.
 
-* **Main steps:**
-  * **Step 1 — Compute $AB$:**
+First, we compute $AB$:
 
-$$AB = \begin{pmatrix} 2 & 1 \\\\ 1 & 1 \end{pmatrix}\begin{pmatrix} 1 & -1 \\\\ -1 & 2 \end{pmatrix} = \begin{pmatrix} (2)(1) + (1)(-1) & (2)(-1) + (1)(2) \\\\ (1)(1) + (1)(-1) & (1)(-1) + (1)(2) \end{pmatrix} = \begin{pmatrix} 2 - 1 & -2 + 2 \\\\ 1 - 1 & -1 + 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} = I_2$$
+$$
+AB = \begin{pmatrix}
+2 & 1 \\
+1 & 1 \\
+\end{pmatrix} \begin{pmatrix}
+1 & -1 \\
+-1 & 2 \\
+\end{pmatrix} = \begin{pmatrix}
+(2)(1) + (1)(-1) & (2)(-1) + (1)(2) \\
+(1)(1) + (1)(-1) & (1)(-1) + (1)(2) \\
+\end{pmatrix}
+$$
 
-  * **Step 2 — Compute $BA$:**
+Simplifying each entry gives:
 
-$$BA = \begin{pmatrix} 1 & -1 \\\\ -1 & 2 \end{pmatrix}\begin{pmatrix} 2 & 1 \\\\ 1 & 1 \end{pmatrix} = \begin{pmatrix} (1)(2) + (-1)(1) & (1)(1) + (-1)(1) \\\\ (-1)(2) + (2)(1) & (-1)(1) + (2)(1) \end{pmatrix} = \begin{pmatrix} 2 - 1 & 1 - 1 \\\\ -2 + 2 & -1 + 2 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} = I_2$$
+$$
+AB = \begin{pmatrix}
+2 - 1 & -2 + 2 \\
+1 - 1 & -1 + 2 \\
+\end{pmatrix} = \begin{pmatrix}
+1 & 0 \\
+0 & 1 \\
+\end{pmatrix} = I_2
+$$
 
-  * **Step 3 — Relate to the Definition of the Inverse:** Since both $AB = I_2$ and $BA = I_2$ hold directly by multiplication, $B$ satisfies the exact defining condition of the inverse of $A$ (and symmetrically, $A = B^{-1}$).
+Next, we compute $BA$:
 
-* **Result:**
+$$
+BA = \begin{pmatrix}
+1 & -1 \\
+-1 & 2 \\
+\end{pmatrix} \begin{pmatrix}
+2 & 1 \\
+1 & 1 \\
+\end{pmatrix} = \begin{pmatrix}
+(1)(2) + (-1)(1) & (1)(1) + (-1)(1) \\
+(-1)(2) + (2)(1) & (-1)(1) + (2)(1) \\
+\end{pmatrix}
+$$
 
-$$AB = \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} = I_2, \qquad BA = \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix} = I_2 \implies B = A^{-1}$$
+Simplifying each entry gives:
 
-* **Verification:** Checking determinants and testing on a vector $x = \begin{pmatrix} 3 \\\\ 4 \end{pmatrix}$ confirms the inverse relationship:
-  * $\det(A) = (2)(1) - (1)(1) = 1 \neq 0$, so $A$ is invertible, and $\det(B) = (1)(2) - (-1)(-1) = 1 = \frac{1}{\det(A)}$.
-  * Applying $A$ to $x = \begin{pmatrix} 3 \\\\ 4 \end{pmatrix}$ gives $Ax = \begin{pmatrix} 10 \\\\ 7 \end{pmatrix}$, and applying $B$ recovers $B(Ax) = \begin{pmatrix} 10 - 7 \\\\ -10 + 14 \end{pmatrix} = \begin{pmatrix} 3 \\\\ 4 \end{pmatrix} = x$.
+$$
+BA = \begin{pmatrix}
+2 - 1 & 1 - 1 \\
+-2 + 2 & -1 + 2 \\
+\end{pmatrix} = \begin{pmatrix}
+1 & 0 \\
+0 & 1 \\
+\end{pmatrix} = I_2
+$$
+
+### 2. Relating the Results to the Definition of the Inverse
+
+By definition, for a square matrix $A$ of size $n \times n$, a matrix $B$ of the same size is the inverse of $A$ (denoted $B = A^{-1}$) if and only if both products equal the $n \times n$ identity matrix:
+
+$$
+AB = I_2 \quad \text{and} \quad BA = I_2
+$$
+
+Because we found $AB = I_2$ and $BA = I_2$ directly by multiplication without using any formula, we confirm that $B = A^{-1}$ (and equivalently $A = B^{-1}$).
