@@ -66,4 +66,4 @@ $$
 \text{Number of free variables} = \text{Number of unknowns} - \text{Number of pivots} = 3 - 2 = 1
 $$
 
-Because there is $1$ pivot and $3$ unknowns, exactly $1$ variable ($z$) can be chosen freely as a parameter.
+Because there are two pivots and three unknowns, so exactly one free variable ($z$) can be chosen freely as a parameter.
