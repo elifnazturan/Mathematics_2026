@@ -1,64 +1,71 @@
 # Exercise 10. Inverse of a Diagonal Matrix
 
-**Given:**
+## Question
 
-$$D = \begin{pmatrix} 2 & 0 & 0 \\\\ 0 & -3 & 0 \\\\ 0 & 0 & 5 \end{pmatrix}, \qquad E = \begin{pmatrix} 2 & 0 & 0 \\\\ 0 & 0 & 0 \\\\ 0 & 0 & 5 \end{pmatrix}$$
+We are given two $3 \times 3$ diagonal matrices:
 
----
+$$
+D = \begin{pmatrix}
+2 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & 5 \\
+\end{pmatrix}, \quad E = \begin{pmatrix}
+2 & 0 & 0 \\
+0 & 0 & 0 \\
+0 & 0 & 5 \\
+\end{pmatrix}
+$$
 
-### 1. Determine Without Using Gauss-Jordan Elimination Which Matrix Is Invertible.
+We need to:
+1. Decide, without using Gauss--Jordan elimination, which matrix is invertible.
+2. For the invertible matrix, give its inverse $D^{-1}$.
+3. Check the result by matrix multiplication.
 
-* **Method and Property Used:**
-  * **Invertibility Criterion for Diagonal Matrices:** For a diagonal matrix $\text{diag}(d_1, d_2, \dots, d_n)$, the determinant equals the product of its main diagonal entries:
+## Solution
 
-$$\det(\text{diag}(d_1, d_2, \dots, d_n)) = d_1 d_2 \cdots d_n$$
+### 1. Deciding Which Matrix Is Invertible
 
-  * Therefore, a diagonal matrix is **invertible if and only if every main diagonal entry is nonzero** ($d_i \neq 0$ for all $i$). If any diagonal entry is zero, an entire row and column are zero, forcing $\det = 0$ and making the matrix singular.
+A diagonal matrix is invertible if and only if all of its main diagonal entries are nonzero (equivalently, its determinant, which equals the product of its diagonal entries, is nonzero):
 
-* **Main steps:**
-  * **Check matrix $D$:** The main diagonal entries are $2$, $-3$, and $5$, all of which are nonzero:
+- For $D$, the diagonal entries are $2$, $-3$, and $5$. Since none of them is zero ($\det(D) = 2 \cdot (-3) \cdot 5 = -30 \neq 0$), matrix $D$ is invertible.
+- For $E$, the diagonal entries are $2$, $0$, and $5$. Because the $(2, 2)$ diagonal entry is $0$ (and $\det(E) = 2 \cdot 0 \cdot 5 = 0$), matrix $E$ is not invertible.
 
-$$\det(D) = (2)(-3)(5) = -30 \neq 0$$
+Thus, only $D$ is invertible.
 
-    Thus, **$D$ is invertible**.
+### 2. Finding $D^{-1}$
 
-  * **Check matrix $E$:** The $(2,2)$ diagonal entry is $0$ (creating an entire zero row $R_2 = \begin{pmatrix} 0 & 0 & 0 \end{pmatrix}$):
+Without using Gauss--Jordan elimination, the inverse of an invertible diagonal matrix is obtained simply by taking the reciprocal of each diagonal entry:
 
-$$\det(E) = (2)(0)(5) = 0$$
+$$
+D^{-1} = \begin{pmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & -\frac{1}{3} & 0 \\
+0 & 0 & \frac{1}{5} \\
+\end{pmatrix}
+$$
 
-    Thus, **$E$ is not invertible** (singular).
+### 3. Checking the Result by Multiplication
 
-* **Result:**
+By the definition of an inverse matrix, multiplying $D$ and $D^{-1}$ should produce the $3 \times 3$ identity matrix $I_3$:
 
-$$D \text{ is invertible } (\det(D) = -30 \neq 0), \qquad E \text{ is not invertible } (\det(E) = 0)$$
+$$
+D D^{-1} = \begin{pmatrix}
+2 & 0 & 0 \\
+0 & -3 & 0 \\
+0 & 0 & 5 \\
+\end{pmatrix} \begin{pmatrix}
+\frac{1}{2} & 0 & 0 \\
+0 & -\frac{1}{3} & 0 \\
+0 & 0 & \frac{1}{5} \\
+\end{pmatrix} = \begin{pmatrix}
+2 \cdot \frac{1}{2} & 0 & 0 \\
+0 & (-3) \cdot \left(-\frac{1}{3}\right) & 0 \\
+0 & 0 & 5 \cdot \frac{1}{5} \\
+\end{pmatrix} = \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{pmatrix} = I_3
+$$
 
-* **Verification:** For any matrix $X$, the second row of $EX$ is $R_2(E) X = \begin{pmatrix} 0 & 0 & 0 \end{pmatrix} X = \begin{pmatrix} 0 & 0 & 0 \end{pmatrix}$, which can never equal the second row $\begin{pmatrix} 0 & 1 & 0 \end{pmatrix}$ of $I_3$, proving $E^{-1}$ does not exist.
-
----
-
-### 2. For the Invertible Matrix, Compute Its Inverse and Check the Result by Multiplication.
-
-* **Method and Property Used:**
-  * **Diagonal Inverse Rule:** The inverse of an invertible diagonal matrix $\text{diag}(d_1, d_2, d_3)$ is obtained directly by taking the reciprocal of each main diagonal entry:
-
-$$\text{diag}(d_1, d_2, d_3)^{-1} = \text{diag}\left(\frac{1}{d_1}, \frac{1}{d_2}, \frac{1}{d_3}\right)$$
-
-* **Main steps:**
-  * Replace each diagonal entry of $D = \text{diag}(2, -3, 5)$ with its multiplicative inverse:
-    * $(1,1)$ entry: $\frac{1}{2}$
-    * $(2,2)$ entry: $\frac{1}{-3} = -\frac{1}{3}$
-    * $(3,3)$ entry: $\frac{1}{5}$
-
-$$D^{-1} = \begin{pmatrix} \frac{1}{2} & 0 & 0 \\\\ 0 & -\frac{1}{3} & 0 \\\\ 0 & 0 & \frac{1}{5} \end{pmatrix}$$
-
-* **Result:**
-
-$$D^{-1} = \begin{pmatrix} \frac{1}{2} & 0 & 0 \\\\ 0 & -\frac{1}{3} & 0 \\\\ 0 & 0 & \frac{1}{5} \end{pmatrix}$$
-
-* **Verification:** Check by computing both products $D D^{-1}$ and $D^{-1} D$:
-
-$$D D^{-1} = \begin{pmatrix} 2 & 0 & 0 \\\\ 0 & -3 & 0 \\\\ 0 & 0 & 5 \end{pmatrix}\begin{pmatrix} \frac{1}{2} & 0 & 0 \\\\ 0 & -\frac{1}{3} & 0 \\\\ 0 & 0 & \frac{1}{5} \end{pmatrix} = \begin{pmatrix} (2)\left(\frac{1}{2}\right) & 0 & 0 \\\\ 0 & (-3)\left(-\frac{1}{3}\right) & 0 \\\\ 0 & 0 & (5)\left(\frac{1}{5}\right) \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{pmatrix} = I_3$$
-
-$$D^{-1} D = \begin{pmatrix} \frac{1}{2} & 0 & 0 \\\\ 0 & -\frac{1}{3} & 0 \\\\ 0 & 0 & \frac{1}{5} \end{pmatrix}\begin{pmatrix} 2 & 0 & 0 \\\\ 0 & -3 & 0 \\\\ 0 & 0 & 5 \end{pmatrix} = \begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{pmatrix} = I_3$$
-
-  Both products equal $I_3$, confirming $D^{-1}$ is exact.
+Since $D D^{-1} = I_3$, the inverse matrix $D^{-1}$ is verified.
