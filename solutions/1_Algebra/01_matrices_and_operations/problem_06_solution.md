@@ -19,8 +19,7 @@ B = \begin{pmatrix}
 \end{pmatrix}
 $$
 
-We need to compute $A^T$, $B^T$, and $AB$, and then verify for these matrices that $(AB)^T = B^T A^T$[cite: 5]. The purpose of this exercise is to practice matrix transposition and verify the property that transposing a product reverses the order of multiplication[cite: 5].
-
+We need to compute $A^T$, $B^T$, and $AB$, and then verify for these matrices that $(AB)^T = B^T A^T$. The purpose of this exercise is to practice matrix transposition and verify the property that transposing a product reverses the order of multiplication.
 ## Solution
 
 ### 1. Transposes of $A$ and $B$
