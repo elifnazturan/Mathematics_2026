@@ -1,81 +1,47 @@
 # Exercise 7. Using Properties Instead of Recomputing
 
-**Given:**
+## Question
 
-$$A \text{ is a } 3 \times 3 \text{ matrix with } \det(A) = -4$$
+We are given a $3 \times 3$ matrix $A$ such that:
 
----
+$$
+\det(A) = -4
+$$
 
-### 1. Compute $\det(2A)$.
+We need to:
+1. Compute $\det(2A)$, $\det(A^T)$, $\det(A^2)$, and $\det(-A)$.
+2. Justify each result using the appropriate determinant property.
 
-* **Method and Property Used:** For an $n \times n$ matrix $A$ and any scalar $c$, scaling the entire matrix multiplies every row by $c$, so:
+## Solution
 
-$$\det(cA) = c^n \det(A)$$
+### 1. Computing $\det(2A)$
 
-  Here $n = 3$ and $c = 2$.
+Multiplying every entry of an $n \times n$ matrix by a scalar $k$ multiplies each of its $n$ rows by $k$, so $\det(kA) = k^n \det(A)$. Since $A$ has size $n = 3$ and $k = 2$:
 
-* **Main steps:**
+$$
+\det(2A) = 2^3 \det(A) = 8 \cdot (-4) = -32
+$$
 
-$$\det(2A) = 2^3 \det(A) = 8 \cdot (-4)$$
+### 2. Computing $\det(A^T)$
 
-* **Result:**
+The determinant of the transpose of a square matrix is equal to the determinant of the original matrix ($\det(A^T) = \det(A)$):
 
-$$\det(2A) = -32$$
+$$
+\det(A^T) = \det(A) = -4
+$$
 
-* **Verification:** Testing with a concrete $3 \times 3$ diagonal matrix having $\det(A) = -4$, such as $A = \begin{pmatrix} -4 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{pmatrix}$, gives $2A = \begin{pmatrix} -8 & 0 & 0 \\\\ 0 & 2 & 0 \\\\ 0 & 0 & 2 \end{pmatrix}$ and $\det(2A) = (-8)(2)(2) = -32$.
+### 3. Computing $\det(A^2)$
 
----
+The determinant of a product of two square matrices of the same size is the product of their determinants ($\det(AB) = \det(A)\det(B)$). Taking $B = A$ gives $\det(A^2) = (\det(A))^2$:
 
-### 2. Compute $\det(A^T)$.
+$$
+\det(A^2) = (\det(A))^2 = (-4)^2 = 16
+$$
 
-* **Method and Property Used:** **Transposing a square matrix leaves its determinant unchanged**:
+### 4. Computing $\det(-A)$
 
-$$\det(A^T) = \det(A)$$
+Writing $-A = (-1)A$ for the $3 \times 3$ matrix $A$ ($n = 3$) and applying the scalar multiple property $\det(kA) = k^n \det(A)$ with $k = -1$:
 
-* **Main steps:**
-
-$$\det(A^T) = \det(A) = -4$$
-
-* **Result:**
-
-$$\det(A^T) = -4$$
-
-* **Verification:** For the diagonal test matrix $A = \begin{pmatrix} -4 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{pmatrix}$, $A^T = A$, so $\det(A^T) = -4$.
-
----
-
-### 3. Compute $\det(A^2)$.
-
-* **Method and Property Used:** By the **multiplicative property of determinants** ($\det(AB) = \det(A)\det(B)$), for any positive integer $k$:
-
-$$\det(A^k) = (\det(A))^k$$
-
-  Here $k = 2$.
-
-* **Main steps:**
-
-$$\det(A^2) = \det(A \cdot A) = \det(A)\det(A) = (\det(A))^2 = (-4)^2$$
-
-* **Result:**
-
-$$\det(A^2) = 16$$
-
-* **Verification:** For $A = \begin{pmatrix} -4 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{pmatrix}$, $A^2 = \begin{pmatrix} 16 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{pmatrix}$, whose diagonal product is $(16)(1)(1) = 16$.
-
----
-
-### 4. Compute $\det(-A)$.
-
-* **Method and Property Used:** Writing $-A = (-1)A$ and applying the scalar-multiple rule $\det(cA) = c^n \det(A)$ with $c = -1$ and $n = 3$:
-
-$$\det(-A) = (-1)^3 \det(A)$$
-
-* **Main steps:**
-
-$$\det(-A) = (-1)^3 \det(A) = (-1)(-4)$$
-
-* **Result:**
-
-$$\det(-A) = 4$$
-
-* **Verification:** For $A = \begin{pmatrix} -4 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \end{pmatrix}$, $-A = \begin{pmatrix} 4 & 0 & 0 \\\\ 0 & -1 & 0 \\\\ 0 & 0 & -1 \end{pmatrix}$, and $\det(-A) = (4)(-1)(-1) = 4$.
+$$
+\det(-A) = (-1)^3 \det(A) = (-1) \cdot (-4) = 4
+$$
