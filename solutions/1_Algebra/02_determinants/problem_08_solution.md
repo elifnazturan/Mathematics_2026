@@ -1,60 +1,63 @@
 # Exercise 8. Determinant of a Product
 
-**Given:**
+## Question
 
-$$A, B \text{ are } n \times n \text{ square matrices with } \det(A) = 3 \text{ and } \det(B) = -5$$
+We are given two square matrices $A$ and $B$ of the same size such that:
 
----
+$$
+\det(A) = 3, \quad \det(B) = -5
+$$
 
-### 1. Compute $\det(AB)$, $\det(BA)$, and (If It Exists) $\det(A^{-1}B)$.
+We need to:
+1. Compute $\det(AB)$, $\det(BA)$, and (if it exists) $\det(A^{-1}B)$.
+2. Explain why $\det(AB) = \det(BA)$ even though matrix multiplication is generally not commutative ($AB \neq BA$).
 
-* **Method and Property Used:**
-  * **Multiplicative property of determinants:** For any two square matrices $A$ and $B$ of the same size, $\det(AB) = \det(A)\det(B)$.
-  * **Determinant of an inverse matrix:** A square matrix $A$ is invertible if and only if $\det(A) \neq 0$, in which case $\det(A^{-1}) = \frac{1}{\det(A)}$.
+## Solution
 
-* **Compute $\det(AB)$:**
-  * *Main steps:*
+### 1. Computing $\det(AB)$, $\det(BA)$, and $\det(A^{-1}B)$
 
-$$\det(AB) = \det(A)\det(B) = (3)(-5)$$
+For any two square matrices $A$ and $B$ of the same size, the determinant of their product equals the product of their determinants:
 
-  * *Result:*
+$$
+\det(AB) = \det(A)\det(B)
+$$
 
-$$\det(AB) = -15$$
+Substituting $\det(A) = 3$ and $\det(B) = -5$:
 
-* **Compute $\det(BA)$:**
-  * *Main steps:*
+$$
+\det(AB) = 3 \cdot (-5) = -15
+$$
 
-$$\det(BA) = \det(B)\det(A) = (-5)(3)$$
+Applying the same product rule in the reverse order gives:
 
-  * *Result:*
+$$
+\det(BA) = \det(B)\det(A)
+$$
 
-$$\det(BA) = -15$$
+Because scalar multiplication of real numbers is commutative, we get:
 
-* **Compute $\det(A^{-1}B)$:**
-  * *Existence check:* Since $\det(A) = 3 \neq 0$, the inverse $A^{-1}$ exists, so $A^{-1}B$ is well-defined and $\det(A^{-1}) = \frac{1}{\det(A)} = \frac{1}{3}$.
-  * *Main steps:*
+$$
+\det(BA) = (-5) \cdot 3 = -15
+$$
 
-$$\det(A^{-1}B) = \det(A^{-1})\det(B) = \frac{1}{\det(A)}\det(B) = \frac{1}{3}(-5)$$
+Next, check whether $A^{-1}$ exists. Since $\det(A) = 3 \neq 0$, matrix $A$ is invertible, and its inverse satisfies:
 
-  * *Result:*
+$$
+\det(A^{-1}) = \frac{1}{\det(A)} = \frac{1}{3}
+$$
 
-$$\det(A^{-1}B) = -\frac{5}{3}$$
+Therefore, $A^{-1}B$ is well-defined, and applying the product rule gives:
 
-* **Verification:** Test with concrete $2 \times 2$ matrices having $\det(A) = 3$ and $\det(B) = -5$, such as $A = \begin{pmatrix} 3 & 1 \\\\ 0 & 1 \end{pmatrix}$ and $B = \begin{pmatrix} 1 & 0 \\\\ 2 & -5 \end{pmatrix}$:
-  * $AB = \begin{pmatrix} 5 & -5 \\\\ 2 & -5 \end{pmatrix} \implies \det(AB) = (5)(-5) - (-5)(2) = -25 + 10 = -15$.
-  * $BA = \begin{pmatrix} 3 & 1 \\\\ 6 & -3 \end{pmatrix} \implies \det(BA) = (3)(-3) - (1)(6) = -9 - 6 = -15$.
-  * $A^{-1} = \frac{1}{3}\begin{pmatrix} 1 & -1 \\\\ 0 & 3 \end{pmatrix}$, so $A^{-1}B = \frac{1}{3}\begin{pmatrix} -1 & 5 \\\\ 6 & -15 \end{pmatrix} \implies \det(A^{-1}B) = \frac{1}{9}(15 - 30) = -\frac{15}{9} = -\frac{5}{3}$.
+$$
+\det(A^{-1}B) = \det(A^{-1})\det(B) = \frac{1}{3} \cdot (-5) = -\frac{5}{3}
+$$
 
----
+### 2. Why $\det(AB) = \det(BA)$ When Usually $AB \neq BA$
 
-### 2. Explain Why the First Two Results Are Equal Even Though Usually $AB \neq BA$.
+In general, matrix multiplication is not commutative, meaning $AB$ and $BA$ are usually different matrices. However, $\det(\cdot)$ maps a square matrix to a single real scalar. Even when the entries and structure of $AB$ and $BA$ differ, their determinants satisfy:
 
-* **Explanation and Method Used:** Although matrix multiplication is **not commutative** in general ($AB \neq BA$ as matrices), the determinant maps each square matrix to a **real number** (scalar), and multiplication of real numbers **is commutative**:
+$$
+\det(AB) = \det(A)\det(B) = \det(B)\det(A) = \det(BA)
+$$
 
-$$\det(AB) = \det(A)\det(B) = \det(B)\det(A) = \det(BA)$$
-
-  Therefore, $AB$ and $BA$ can have completely different entries yet still share the exact same determinant.
-
-* **Result:** $\det(AB) = \det(BA) = -15$ because $\det(A)\det(B) = (3)(-5) = (-5)(3) = \det(B)\det(A)$ in $\mathbb{R}$.
-
-* **Verification:** In the concrete check above, $AB = \begin{pmatrix} 5 & -5 \\\\ 2 & -5 \end{pmatrix} \neq \begin{pmatrix} 3 & 1 \\\\ 6 & -3 \end{pmatrix} = BA$, confirming $AB \neq BA$ while both have determinant $-15$.
+Since $\det(A)$ and $\det(B)$ are ordinary numbers, they commute under multiplication ($\det(A)\det(B) = \det(B)\det(A)$), so the resulting scalar determinants are always equal.
