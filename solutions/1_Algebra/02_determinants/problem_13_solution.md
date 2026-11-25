@@ -1,41 +1,79 @@
 # Exercise 13. Determinant by Elimination
 
-**Given:**
+## Question
 
-$$A = \begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 5 & 7 \\\\ 1 & 0 & 2 \end{pmatrix}$$
+We are given the $3 \times 3$ matrix:
 
----
+$$
+A = \begin{pmatrix}
+1 & 2 & 3 \\
+2 & 5 & 7 \\
+1 & 0 & 2 \\
+\end{pmatrix}
+$$
 
-### Compute $\det(A)$ Using Elimination and Record the Effect of Each Row Operation on the Value of the Determinant.
+We need to:
+1. Compute $\det(A)$ using elimination (row operations).
+2. Record the effect of every row operation used on the value of the determinant.
 
-* **Method and Property Used:**
-  * **Gaussian elimination (row reduction to upper-triangular form):**
-    * **Row replacement** ($R_i \leftarrow R_i + k R_j$, $i \neq j$) leaves the determinant **unchanged** ($\det \to \det$).
-    * **Row swap** ($R_i \leftrightarrow R_j$) **flips the sign** of the determinant ($\det \to -\det$).
-    * **Row scaling** ($R_i \leftarrow k R_i$, $k \neq 0$) **multiplies the determinant by $k$** ($\det \to k\det$).
-  * **Upper-triangular determinant rule:** For an upper-triangular matrix $U$, $\det(U) = u_{11} u_{22} u_{33}$.
+## Solution
 
-* **Main steps:**
-  * **Step 1 — Eliminate entries below the $(1,1)$ pivot:** Apply $R_2 \leftarrow R_2 - 2R_1$ and $R_3 \leftarrow R_3 - R_1$:
-    * *Effect on determinant:* **Unchanged** (both are row-replacement operations).
+### 1. Elimination Steps and Effect on the Determinant
 
-$$\det(A) = \det\begin{pmatrix} 1 & 2 & 3 \\\\ 2 & 5 & 7 \\\\ 1 & 0 & 2 \end{pmatrix} = \det\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 1 \\\\ 0 & -2 & -1 \end{pmatrix}$$
+Adding a scalar multiple of one row to another row ($R_i \leftarrow R_i + k R_j$ with $i \neq j$) does not change the value of the determinant. We use this operation to eliminate entries below the main diagonal and record each step's effect.
 
-  * **Step 2 — Eliminate the entry below the $(2,2)$ pivot:** Apply $R_3 \leftarrow R_3 + 2R_2$:
-    * *Effect on determinant:* **Unchanged** (adding $2 \times \text{Row } 2$ to $\text{Row } 3$ is a row-replacement operation).
+First, apply $R_2 \leftarrow R_2 - 2R_1$:
 
-$$\det(A) = \det\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 1 \end{pmatrix}$$
+$$
+R_2^{\mathrm{new}} = (2, 5, 7) - 2(1, 2, 3) = (0, 1, 1)
+$$
 
-  * **Step 3 — Compute the determinant of the upper-triangular matrix:** Multiply the main diagonal entries ($1$, $1$, and $1$):
-    * *Effect on determinant:* **No row operation performed**; the determinant equals the product of the diagonal entries.
+- **Effect on determinant:** Unchanged (adding $-2$ times row $1$ to row $2$ preserves the determinant).
 
-$$\det(A) = (1)(1)(1) = 1$$
+$$
+\det(A) = \det \begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+1 & 0 & 2 \\
+\end{pmatrix}
+$$
 
-* **Result:**
+Second, apply $R_3 \leftarrow R_3 - R_1$:
 
-$$\det(A) = 1$$
+$$
+R_3^{\mathrm{new}} = (1, 0, 2) - (1, 2, 3) = (0, -2, -1)
+$$
 
-* **Verification:** Check using Sarrus's rule directly on the original matrix $A$:
-  * Down-right products: $(1)(5)(2) + (2)(7)(1) + (3)(2)(0) = 10 + 14 + 0 = 24$.
-  * Up-right products: $(1)(5)(3) + (0)(7)(1) + (2)(2)(2) = 15 + 0 + 8 = 23$.
-  * $\det(A) = 24 - 23 = 1$, matching the value obtained via elimination.
+- **Effect on determinant:** Unchanged (adding $-1$ times row $1$ to row $3$ preserves the determinant).
+
+$$
+\det(A) = \det \begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+0 & -2 & -1 \\
+\end{pmatrix}
+$$
+
+Third, apply $R_3 \leftarrow R_3 + 2R_2$:
+
+$$
+R_3^{\mathrm{new}} = (0, -2, -1) + 2(0, 1, 1) = (0, 0, 1)
+$$
+
+- **Effect on determinant:** Unchanged (adding $2$ times row $2$ to row $3$ preserves the determinant).
+
+$$
+\det(A) = \det \begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+0 & 0 & 1 \\
+\end{pmatrix}
+$$
+
+### 2. Computing the Determinant
+
+The resulting matrix is upper triangular, so its determinant is the product of its main diagonal entries:
+
+$$
+\det(A) = 1 \cdot 1 \cdot 1 = 1
+$$
