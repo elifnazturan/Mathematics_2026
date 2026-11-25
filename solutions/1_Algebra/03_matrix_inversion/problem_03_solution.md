@@ -1,40 +1,38 @@
 # Exercise 3. When Does the Inverse Not Exist?
 
-**Given:**
+## Question
 
-$$A = \begin{pmatrix} 2 & 4 \\\\ 1 & 2 \end{pmatrix}$$
+We are given the $2 \times 2$ matrix:
 
----
+$$
+A = \begin{pmatrix}
+2 & 4 \\
+1 & 2 \\
+\end{pmatrix}
+$$
 
-### Explain in Two Ways Why $A^{-1}$ Does Not Exist: Using the Determinant and Using Dependence Between Rows.
+We need to:
+1. Explain why $A^{-1}$ does not exist using the determinant.
+2. Explain why $A^{-1}$ does not exist using dependence between the rows.
 
-* **Method and Property Used:**
-  * **Way 1 — Determinant Criterion for Invertibility:** A square matrix $A$ is invertible if and only if $\det(A) \neq 0$. If $\det(A) = 0$, $A$ is singular and $A^{-1}$ does not exist (and the $2 \times 2$ inverse formula $\frac{1}{\det(A)}\begin{pmatrix} d & -b \\\\ -c & a \end{pmatrix}$ would require division by zero).
-  * **Way 2 — Linear Dependence of Rows (Invertible Matrix Theorem):** An $n \times n$ matrix $A$ is invertible if and only if its rows are linearly independent (equivalently, row reduction yields $n$ pivots and reduces $A$ to $I_n$). If one row is a scalar multiple of another, row reduction produces a zero row and no inverse exists.
+## Solution
 
-* **Main steps:**
-  * **Way 1 — Using the Determinant:**
-    * Compute $\det(A)$:
+### 1. Explanation Using the Determinant
 
-$$\det(A) = \det\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \end{pmatrix} = (2)(2) - (4)(1) = 4 - 4 = 0$$
+For a $2 \times 2$ matrix $\begin{pmatrix} a & b \\ c & d \\ \end{pmatrix}$, the determinant is $\det(A) = ad - bc$. Computing $\det(A)$ for the given matrix:
 
-    * Since $\det(A) = 0$, $A$ is singular and $A^{-1}$ does not exist.
+$$
+\det(A) = (2)(2) - (4)(1) = 4 - 4 = 0
+$$
 
-  * **Way 2 — Using Dependence Between the Rows:**
-    * Compare Row $1 = \begin{pmatrix} 2 & 4 \end{pmatrix}$ and Row $2 = \begin{pmatrix} 1 & 2 \end{pmatrix}$:
+A square matrix is invertible if and only if its determinant is nonzero ($\det(A) \neq 0$). Because $\det(A) = 0$, the inverse matrix $A^{-1}$ does not exist.
 
-$$R_1 = 2 R_2 \qquad \left(\text{or equivalently, } R_1 - 2 R_2 = \begin{pmatrix} 0 & 0 \end{pmatrix}\right)$$
+### 2. Explanation Using Dependence Between the Rows
 
-    * Because Row $1$ is a scalar multiple of Row $2$, the rows are **linearly dependent**. Applying $R_1 \leftarrow R_1 - 2R_2$ reduces $A$ to $\begin{pmatrix} 0 & 0 \\\\ 1 & 2 \end{pmatrix}$, which has only $1$ pivot ($< 2$) and can never be row-reduced to $I_2$.
+Let $r_1 = (2, 4)$ and $r_2 = (1, 2)$ denote the first and second rows of $A$. The first row is twice the second row:
 
-  * **Connection Between Both Explanations:** Row dependence ($R_1 = 2R_2$) directly forces $\det(A) = 0$, so both conditions describe the exact same collapse of rank ($\text{rank}(A) = 1 < 2$).
+$$
+r_1 = 2r_2 \quad \Longleftrightarrow \quad r_1 - 2r_2 = (0, 0)
+$$
 
-* **Result:**
-
-$$A^{-1} \text{ does not exist because } \det(A) = 0 \text{ and the rows of } A \text{ are linearly dependent } (R_1 = 2R_2).$$
-
-* **Verification:** Suppose for contradiction that an inverse $B = \begin{pmatrix} x & y \\\\ z & w \end{pmatrix}$ existed such that $A B = I_2$:
-
-$$\begin{pmatrix} 2 & 4 \\\\ 1 & 2 \end{pmatrix} \begin{pmatrix} x & y \\\\ z & w \end{pmatrix} = \begin{pmatrix} 2x + 4z & 2y + 4w \\\\ x + 2z & y + 2w \end{pmatrix} = \begin{pmatrix} 1 & 0 \\\\ 0 & 1 \end{pmatrix}$$
-
-  Comparing the first-column entries requires both $x + 2z = 0$ and $2(x + 2z) = 1$, which gives $2(0) = 1 \implies 0 = 1$, a contradiction proving no inverse $A^{-1}$ can exist.
+Because one row is a scalar multiple of the other, the rows of $A$ are linearly dependent. A square matrix with linearly dependent rows cannot have full rank or be inverted via row reduction to the identity matrix, so $A^{-1}$ does not exist. Connecting both views: linear dependence of the rows forces $\det(A) = 0$, which means $A$ is singular and noninvertible.
