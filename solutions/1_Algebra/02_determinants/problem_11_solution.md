@@ -1,37 +1,92 @@
-# Exercise 11. Shortening Computation via Row Operations
+# Exercise 11. Shortening the Calculation with Row Operations
 
-**Given:**
+## Question
 
-$$A = \begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 3 & 4 \\\\ 1 & 4 & 6 \end{pmatrix}$$
+We are given the $3 \times 3$ matrix:
 
----
+$$
+A = \begin{pmatrix}
+1 & 2 & 3 \\
+1 & 3 & 4 \\
+1 & 4 & 6 \\
+\end{pmatrix}
+$$
 
-### Compute $\det(A)$ by First Performing Row Operations to Create as Many Zeros as Possible, and State Which Operations Leave the Determinant Unchanged.
+We need to:
+1. Compute $\det(A)$ by first performing row operations that create as many zeros as possible.
+2. State which row operations do not change the determinant.
 
-* **Method and Property Used:**
-  * **Row-replacement invariance:** Adding a scalar multiple of one row to another row ($R_i \leftarrow R_i + k R_j$, $i \neq j$) leaves the determinant **completely unchanged**.
-  * **Upper-triangular determinant rule:** Once all entries below the main diagonal are zero, the determinant equals the product of the main diagonal entries.
+## Solution
 
-* **Main steps:**
-  * **Step 1 — Create zeros in Column 1 below the $(1,1)$ pivot:** Apply $R_2 \leftarrow R_2 - R_1$ and $R_3 \leftarrow R_3 - R_1$:
-    * *Effect on determinant:* **Unchanged**, because each operation adds a multiple ($-1$) of Row $1$ to another row.
+### 1. Row Operations That Preserve the Determinant
 
-$$\det(A) = \det\begin{pmatrix} 1 & 2 & 3 \\\\ 1 & 3 & 4 \\\\ 1 & 4 & 6 \end{pmatrix} = \det\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 1 \\\\ 0 & 2 & 3 \end{pmatrix}$$
+Adding a scalar multiple of one row to another row ($R_i \leftarrow R_i + k R_j$ with $i \neq j$) does not change the determinant of a square matrix. Swapping two rows or multiplying a row by a nonzero scalar would change the determinant, so we stick strictly to row-replacement operations of the form $R_i \leftarrow R_i + k R_j$.
 
-  * **Step 2 — Create a zero in Column 2 below the $(2,2)$ pivot:** Apply $R_3 \leftarrow R_3 - 2R_2$:
-    * *Effect on determinant:* **Unchanged**, because adding $-2 \times \text{Row } 2$ to $\text{Row } 3$ is a row-replacement operation.
+### 2. Creating Zeros and Computing $\det(A)$
 
-$$\det(A) = \det\begin{pmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 1 \\\\ 0 & 0 & 1 \end{pmatrix}$$
+Because the first entry in all three rows is $1$, we can eliminate the leading $1$ in the second and third rows using the first row.
 
-  * **Step 3 — Evaluate the resulting upper-triangular matrix:** Multiply the diagonal entries ($1$, $1$, and $1$):
+First, apply the row operation $R_2 \leftarrow R_2 - R_1$:
 
-$$\det(A) = (1)(1)(1) = 1$$
+$$
+R_2^{\mathrm{new}} = (1, 3, 4) - (1, 2, 3) = (0, 1, 1)
+$$
 
-* **Result:**
+This operation does not change the determinant:
 
-$$\det(A) = 1$$
+$$
+\det(A) = \det \begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+1 & 4 & 6 \\
+\end{pmatrix}
+$$
 
-* **Verification:** Check using Sarrus's rule directly on the original matrix $A$:
-  * Down-right products: $(1)(3)(6) + (2)(4)(1) + (3)(1)(4) = 18 + 8 + 12 = 38$.
-  * Up-right products: $(1)(3)(3) + (4)(4)(1) + (6)(1)(2) = 9 + 16 + 12 = 37$.
-  * $\det(A) = 38 - 37 = 1$, matching the result obtained via row reduction.
+Next, apply the row operation $R_3 \leftarrow R_3 - R_1$:
+
+$$
+R_3^{\mathrm{new}} = (1, 4, 6) - (1, 2, 3) = (0, 2, 3)
+$$
+
+This operation also leaves the determinant unchanged:
+
+$$
+\det(A) = \det \begin{pmatrix}
+1 & 2 & 3 \\
+0 & 1 & 1 \\
+0 & 2 & 3 \\
+\end{pmatrix}
+$$
+
+Now the first column has zeros below the pivot $1$, so expanding along the first column gives a $2 \times 2$ determinant:
+
+$$
+\det(A) = 1 \cdot \det \begin{pmatrix}
+1 & 1 \\
+2 & 3 \\
+\end{pmatrix}
+$$
+
+We can make one more zero in the $2 \times 2$ block by applying $R_2' \leftarrow R_2' - 2R_1'$ to the rows $(1, 1)$ and $(2, 3)$, which again does not change the determinant:
+
+$$
+(2, 3) - 2(1, 1) = (0, 1)
+$$
+
+This gives a triangular $2 \times 2$ matrix:
+
+$$
+\det \begin{pmatrix}
+1 & 1 \\
+2 & 3 \\
+\end{pmatrix} = \det \begin{pmatrix}
+1 & 1 \\
+0 & 1 \\
+\end{pmatrix} = 1 \cdot 1 = 1
+$$
+
+Therefore:
+
+$$
+\det(A) = 1
+$$
