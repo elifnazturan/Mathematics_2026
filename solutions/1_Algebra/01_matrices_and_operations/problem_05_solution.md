@@ -1,184 +1,141 @@
-
-# Exercise 5 – Matrix Times Vector
+# Exercise 5. Matrix-Vector Product
 
 ## Question
 
-Given the matrix and vector:
+We are given a $2 \times 2$ matrix $A$ and a $2 \times 1$ column vector $X$:
 
 $$
-A =
-\begin{pmatrix}
+A = \begin{pmatrix}
 2 & -1 \\
 1 & 3 \\
 \end{pmatrix}
 $$
 
 $$
-x =
-\begin{pmatrix}
+X = \begin{pmatrix}
 4 \\
 2 \\
 \end{pmatrix}
 $$
 
-The tasks are:
-
-1. Calculate the product $Ax$.
-2. Express $Ax$ as a linear combination of the columns of matrix $A$, using the coefficients from vector $x$.
+We need to compute the product $AX$ and then express $AX$ as a linear combination of the columns of $A$, using the components of $X$ as coefficients.
 
 ## Solution
 
-### 1. Calculating the Product Ax
+### 1. Direct Matrix-Vector Multiplication
 
-To calculate $Ax$, I multiply each row of matrix $A$ by the vector $x$.
+First, we check the dimensions. Matrix $A$ has size $2 \times 2$ and vector $X$ has size $2 \times 1$. Since the number of columns in $A$ equals the number of rows in $X$, the product $AX$ is defined and results in a $2 \times 1$ vector.
 
-$$
-Ax =
-\begin{pmatrix}
-2 & -1 \\
-1 & 3 \\
-\end{pmatrix}
-\begin{pmatrix}
-4 \\
-2 \\
-\end{pmatrix}
-$$
-
-I calculate each entry separately:
+Using the definition of matrix-vector multiplication:
 
 $$
-Ax =
-\begin{pmatrix}
+AX = \begin{pmatrix}
 2 \cdot 4 + (-1) \cdot 2 \\
 1 \cdot 4 + 3 \cdot 2 \\
 \end{pmatrix}
 $$
 
-After performing the calculations:
+Simplifying each entry gives:
 
 $$
-Ax =
-\begin{pmatrix}
+AX = \begin{pmatrix}
 8 - 2 \\
 4 + 6 \\
 \end{pmatrix}
 $$
 
-Therefore:
-
 $$
-Ax =
-\begin{pmatrix}
+AX = \begin{pmatrix}
 6 \\
 10 \\
 \end{pmatrix}
 $$
 
-### 2. Expressing Ax as a Linear Combination of Columns
+### 2. Linear Combination of the Columns of $A$
 
-First, I write the columns of matrix $A$ separately.
-
-The first column is:
+Let $a_1$ and $a_2$ be the first and second columns of matrix $A$:
 
 $$
-a_1 =
-\begin{pmatrix}
+a_1 = \begin{pmatrix}
 2 \\
 1 \\
 \end{pmatrix}
 $$
 
-The second column is:
-
 $$
-a_2 =
-\begin{pmatrix}
+a_2 = \begin{pmatrix}
 -1 \\
 3 \\
 \end{pmatrix}
 $$
 
-The vector $x$ contains the coefficients 4 and 2. Therefore, I can express the product as:
+Using the entries $x_1 = 4$ and $x_2 = 2$ of vector $X$ as scalar weights, we write $AX$ as a linear combination of $a_1$ and $a_2$:
 
 $$
-Ax = 4a_1 + 2a_2
+AX = 4a_1 + 2a_2
 $$
 
 Substituting the column vectors:
 
 $$
-Ax =
-4
-\begin{pmatrix}
+AX = 4 \begin{pmatrix}
 2 \\
 1 \\
-\end{pmatrix}
-+
-2
-\begin{pmatrix}
+\end{pmatrix} + 2 \begin{pmatrix}
 -1 \\
 3 \\
 \end{pmatrix}
 $$
 
-Multiplying each vector by its coefficient:
+Multiplying each vector by its scalar coefficient:
 
 $$
-Ax =
-\begin{pmatrix}
+AX = \begin{pmatrix}
 8 \\
 4 \\
-\end{pmatrix}
-+
-\begin{pmatrix}
+\end{pmatrix} + \begin{pmatrix}
 -2 \\
 6 \\
 \end{pmatrix}
 $$
 
-Adding the vectors:
+Adding the resulting vectors component by component:
 
 $$
-Ax =
-\begin{pmatrix}
+AX = \begin{pmatrix}
 8 - 2 \\
 4 + 6 \\
 \end{pmatrix}
-=
-\begin{pmatrix}
+$$
+
+$$
+AX = \begin{pmatrix}
 6 \\
 10 \\
 \end{pmatrix}
 $$
 
-### 3. Verification
+### 3. Verification and Final Answer
 
-The result from the linear combination is the same as the result from the matrix multiplication.
+Both direct multiplication and the linear combination of columns yield the exact same result, confirming that multiplying a matrix by a vector corresponds to taking a linear combination of its columns.
+
+The product is:
 
 $$
-Ax =
-\begin{pmatrix}
+AX = \begin{pmatrix}
 6 \\
 10 \\
 \end{pmatrix}
 $$
 
-Both methods give the same answer, so the calculation is correct.
-
-## Final Answer
+Written as a linear combination of the columns of $A$:
 
 $$
-Ax =
-\begin{pmatrix}
-6 \\
-10 \\
+AX = 4 \begin{pmatrix}
+2 \\
+1 \\
+\end{pmatrix} + 2 \begin{pmatrix}
+-1 \\
+3 \\
 \end{pmatrix}
 $$
-
-The linear combination of the columns of $A$ is:
-
-$$
-Ax = 4a_1 + 2a_2
-$$
-
-This shows that multiplying a matrix by a vector is equivalent to taking a linear combination of the matrix columns, using the entries of the vector as coefficients.
