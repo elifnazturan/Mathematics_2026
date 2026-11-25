@@ -1,39 +1,46 @@
 # Exercise 4. Triangular Matrix
 
-**Given:**
+## Question
 
-$$T = \begin{pmatrix} 2 & 4 & 1 \\\\ 0 & -3 & 5 \\\\ 0 & 0 & 7 \end{pmatrix}$$
+We are given the $3 \times 3$ upper triangular matrix:
 
----
+$$
+A = \begin{pmatrix}
+2 & 4 & 1 \\
+0 & -3 & 5 \\
+0 & 0 & 7 \\
+\end{pmatrix}
+$$
 
-### 1. Compute $\det(T)$ Without Expanding.
+We need to:
+1. Compute $\det(A)$ without expanding the determinant.
+2. State the rule for the determinant of an arbitrary triangular matrix and explain it using this example.
 
-* **Method and Property Used:** The determinant of an **upper (or lower) triangular matrix** equals the product of its main diagonal entries, because all entries below (or above) the main diagonal are zero.
+## Solution
 
-* **Main steps:** Multiply the entries along the main diagonal ($2$, $-3$, and $7$):
+### 1. Computing $\det(A)$ Without Expansion
 
-$$\det \begin{pmatrix} 2 & 4 & 1 \\\\ 0 & -3 & 5 \\\\ 0 & 0 & 7 \end{pmatrix} = (2)(-3)(7) = (-6)(7)$$
+Matrix $A$ is upper triangular because all entries strictly below the main diagonal are equal to $0$. For a triangular matrix, the determinant equals the product of its main diagonal entries:
 
-* **Result:**
+$$
+\det(A) = 2 \cdot (-3) \cdot 7 = -42
+$$
 
-$$\det(T) = -42$$
+### 2. General Rule and Explanation via This Example
 
-* **Verification:** Expanding along the first column gives $2 \cdot \det\begin{pmatrix} -3 & 5 \\\\ 0 & 7 \end{pmatrix} - 0 + 0 = 2 \cdot (-3 \cdot 7 - 5 \cdot 0) = 2(-21) = -42$, matching the diagonal product.
+For any $n \times n$ triangular matrix (either upper triangular or lower triangular), the determinant is equal to the product of the entries on the main diagonal:
 
----
+$$
+\det(T) = t_{11} t_{22} \cdots t_{nn}
+$$
 
-### 2. State the Rule for an Arbitrary Triangular Matrix and Explain It Using This Example.
+In this example, the zeros below the main diagonal make row reduction and cofactor expansion unnecessary. Because the entries below $(1,1)$ and $(2,2)$ are already zero, expanding along the first column only keeps the top-left term $2$ times its $2 \times 2$ submatrix, and then the bottom-right $2 \times 2$ block is already triangular with diagonal entries $-3$ and $7$, giving:
 
-* **Method and Property Used:** For an $n \times n$ triangular matrix $U$ (upper or lower triangular), the rule is:
+$$
+\det(A) = 2 \cdot \det \begin{pmatrix}
+-3 & 5 \\
+0 & 7 \\
+\end{pmatrix} = 2 \cdot (-3) \cdot 7 = -42
+$$
 
-$$\det(U) = u_{11} u_{22} \cdots u_{nn}$$
-
-* **Explanation Using This Example:**
-  * In $T = \begin{pmatrix} 2 & 4 & 1 \\\\ 0 & -3 & 5 \\\\ 0 & 0 & 7 \end{pmatrix}$, all entries below the main diagonal are $0$ ($t_{21} = 0$, $t_{31} = 0$, $t_{32} = 0$).
-  * When expanding along the first column, only the top-left entry $2$ multiplies a nonzero cofactor determinant, leaving $2 \cdot \det\begin{pmatrix} -3 & 5 \\\\ 0 & 7 \end{pmatrix}$.
-  * In that remaining $2 \times 2$ block, the entry below its main diagonal is also $0$, so expanding along its first column leaves only $(-3) \cdot \det\begin{pmatrix} 7 \end{pmatrix} = (-3)(7)$.
-  * Cascading through the zeros below the diagonal leaves only the diagonal entries multiplied together: $2 \cdot (-3) \cdot 7$.
-
-* **Result:** For any triangular matrix, the determinant is the **product of its diagonal entries**, which for $T$ is $(2)(-3)(7) = -42$.
-
-* **Verification:** Since $\det(T) = -42 \neq 0$ (and none of the diagonal entries $2, -3, 7$ is zero), the triangular matrix $T$ is invertible.
+Thus, the determinant is simply the product of the diagonal entries $2$, $-3$, and $7$, which equals $-42$.
